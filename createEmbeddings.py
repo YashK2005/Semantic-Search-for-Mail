@@ -1,3 +1,5 @@
+#this file is used to create embeddings for the email text and upload them to Pinecone.
+
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
@@ -56,14 +58,14 @@ def create_embeddings(df, model, index): #creating embeddings for the email text
 
 
 df = read_csv()
-#token_counter(df.head(1000))
 
-#create_embeddings(df[1400:2000], MODEL, INDEX)
+#create_embeddings(df[1400:2000], MODEL, INDEX) #so far I've created embeddings for first 2000 emails out of approx. 10000 in the dataset
 
+
+#a sample query to check if the embeddings are working 
 res = client.embeddings.create(
     input="How can I learn about how artificial intelligence is impacting the healthcare field?", model=MODEL    
 )
 print("\n\n")
 print(res.data[0].embedding)
 
-print(df.head()[1:50].subject)

@@ -1,3 +1,7 @@
+#this file gets the emails from the gmail account
+#it then parses the emails (strip html tags, remove newlines, etc.)
+#and saves the emails as a .csv file
+
 #for authentication and getting emails
 import csv
 import os
@@ -83,6 +87,7 @@ parser = Parser(policy=policy.default)
 content_dictionary = {
 }
 
+# parsing email content
 counter = 0
 for email in emails:
     try:
@@ -119,7 +124,7 @@ for email in emails:
 #print(content_dictionary)
 
 
-#exporting the values as .csv
+#exporting the values as a .csv
 with open('email.csv', 'w', encoding='utf-8', newline = '') as csvfile: 
     fieldnames = ['id','subject','from','to','body']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter = ',')
