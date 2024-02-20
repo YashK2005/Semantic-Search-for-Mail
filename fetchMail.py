@@ -8,20 +8,15 @@ import os
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-from googleapiclient.errors import HttpError
 import google.auth.exceptions
+from googleapiclient.errors import HttpError
 from googleapiclient.discovery import build
 
 # for parsing emails
-import email
 from email import policy
 from email.parser import Parser
-from io import BytesIO
-import io
 import base64
 from bs4 import BeautifulSoup
-from bs4 import BeautifulSoup
-import re
 
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
@@ -51,7 +46,7 @@ if not creds or not creds.valid:
 
 
 emails = [] # indvidiual raw emails stored
-CUT_OFF = 10000 # maximum number of emails to be downloaded
+CUT_OFF = 100 # maximum number of emails to be downloaded
 try:
   service = build("gmail", "v1", credentials=creds)
   gmail_messages = service.users().messages()

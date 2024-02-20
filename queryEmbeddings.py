@@ -1,3 +1,5 @@
+#this file asks the user for a prompt and then gives the most similar email to the prompt
+
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
